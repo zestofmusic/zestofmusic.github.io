@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Denish | Music Producer & Audio Engineer</title>
+  <meta name="description" content="Portfolio of Denish, a dedicated music producer, audio engineer, and piano teacher.">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- Main Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #23847d;
+      --bg: #f8f8f8;
+      --muted: #f2f2f2;
+      --muted-foreground: #666b6b;
+      --foreground: #222;
+      --border: #e0e0e0;
+      --shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+    }
+    html,body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--foreground);
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: #fffefed9;
+      backdrop-filter: blur(8px);
+      position: sticky; top: 0; left: 0; right: 0; z-index: 10;
+      box-shadow: 0 2px 6px 0 rgba(0,0,0,0.04);
+    }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .nav-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .brand:hover {
+      opacity: 0.8;
+    }
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    #hero {
+      background: var(--muted);
+      padding: 4rem 0 2rem 0;
+      text-align: center;
+    }
+    #hero h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      margin-top: 0;
+    }
+    #hero p {
+      color: var(--muted-foreground);
+      font-size: 1.35rem;
+    }
+
+    /* About Section */
+    #about {
+      padding: 3.5rem 0 0.5rem 0;
+    }
+    #about h2 {
+      text-align: center;
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      margin-top: 0;
+    }
+    #about .about-content {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #333b;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    #about .about-content .highlight {
+      color: var(--primary);
+      font-weight: 600;
+      margin-top: 1.5rem;
+    }
+
+    /* Services */
+    #services {
+      background: var(--muted);
+      padding: 4rem 0;
+      margin-top: 2rem;
+    }
+    #services h2 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      margin-top: 0;
+    }
+    .service-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .service-card {
+      background: #fff;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      min-width: 260px;
+      max-width: 350px;
+      border-radius: 1rem;
+      padding: 1.5rem 1.25rem 1rem 1.25rem;
+      transition: box-shadow 0.2s;
+      flex: 1 1 260px;
+    }
+    .service-card:hover {
+      box-shadow: 0 6px 16px 2px rgba(0,0,0,0.10);
+    }
+    .service-card h3 {
+      margin: 0 0 0.5rem 0;
+      color: var(--primary);
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+    .service-card p {margin: 0; font-size: 1rem;}
+
+    /* Portfolio/Work */
+    #portfolio {
+      padding: 3.5rem 0;
+    }
+    #portfolio h2 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      margin-top: 0;
+    }
+    .portfolio-section h3 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .portfolio-section p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .spotify-btn {
+      display: inline-block;
+      padding: 0.7rem 2rem;
+      font-weight: 500;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 0.5rem;
+      color: #222;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.98rem;
+      transition: background 0.18s, color 0.18s;
+      margin-bottom: 1.7rem;
+    }
+    .spotify-btn:hover {
+      background: #1db954;
+      color: #fff;
+      border-color: #1db954;
+    }
+    .videos-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .videos-grid iframe,
+    .videos-grid .yt-thumb {
+      border: none;
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 370px;
+      height: 205px;
+      background: #222;
+      overflow: hidden;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Testimonials */
+    #testimonials {
+      background: var(--muted);
+      padding: 4rem 0 4rem 0;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    #testimonials h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      margin-top: 0;
+    }
+    .testimonial-box {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      max-width: 640px;
+      margin: 0 auto 2rem auto;
+      box-shadow: var(--shadow);
+    }
+    .testimonial-box p {
+      font-style: italic;
+      color: #222b;
+      font-size: 1.13rem;
+      padding: 2rem 1.8rem 1.1rem 1.8rem;
+      margin: 0;
+    }
+    #testimonials .fiverr-link {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: text-decoration .2s;
+    }
+    #testimonials .fiverr-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact */
+    #contact {
+      padding: 3rem 0 2rem 0;
+      text-align: center;
+    }
+    #contact h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.3rem;
+      margin-top: 0;
+    }
+    #contact p {
+      font-size: 1.15rem;
+      color: var(--muted-foreground);
+      margin-bottom: 2rem;
+    }
+    .hire-btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.8em 2.1em;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-bottom: 1.7rem;
+    }
+    .hire-btn:hover {
+      background: #1a6b66;
+    }
+    #contact .highlight {
+      color: var(--primary);
+      font-size: 1.07rem;
+      font-weight: 600;
+      margin-top: 1.7rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 1.7rem 0 1.5rem 0;
+      text-align: center;
+      border-top: 1px solid #ececec;
+      background: #f6f6f6;
+      color: #999;
+      margin-top: auto;
+    }
+    @media (max-width: 950px) {
+      .service-grid {
+        flex-direction: column;
+      }
+      .videos-grid {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 600px) {
+      .container {padding-left:8px;padding-right:8px;}
+      .brand {font-size: 1.3rem;}
+      nav ul {gap:11px;}
+      #hero h1 {font-size:1.2rem;}
+      #about h2, #services h2, #portfolio h2, #testimonials h2, #contact h2 {font-size: 1.2rem;}
+      .service-card, .testimonial-box {padding: 1rem;}
+      .videos-grid iframe, .videos-grid .yt-thumb {max-width: 100%;height:165px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header>
+    <div class="container nav-flex">
+      <a href="#hero" class="brand">Denish</a>
+      <nav>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main style="flex:1">
+    <!-- HERO -->
+    <section id="hero">
+      <div class="container">
+        <h1>Dedicated music producer, audio engineer, and piano teacher.</h1>
+        <p>Helping people bring their sound to life.</p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="about-content">
+        <h2>About Me</h2>
+        <div>
+        <p>
+        With over 9+ years in the music industry, I am a passionate music producer, audio engineer, and piano teacher. My journey in music has been driven by a deep love for sound and a commitment to helping artists and students achieve their musical aspirations.
+        </p>
+        <p>
+        I completed a Pro Music Production course at Mumbai Music Institute (MMI) in 2019, which significantly honed my technical skills and creative approach. A particularly memorable milestone was performing live with legendary music composer Pritam Da as part of a Guinness World Record 1,000-piece band – an incredible honor that broadened my perspective on large-scale musical productions.
+        </p>
+        <p>
+        My professional experience includes working as a music assistant with Abhijeet Sawant (first Indian Idol winner), serving as an audio engineer for Sony TV, producing music for labels like Saregama India and Zee Music artists, and collaborating with a diverse range of label artists and independent musicians.
+        </p>
+        <p class="highlight">
+          My goal is to help you bring your sound to life.
+        </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <h2>My Services</h2>
+        <div class="service-grid">
+          <div class="service-card">
+            <h3>Music Production</h3>
+            <p>
+              Producing original music for clients, tailored to your vision and genre. From concept to final track, I bring creativity and technical expertise to every project.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>Audio Engineering</h3>
+            <p>
+              Providing comprehensive audio engineering services including mixing, mastering, and audio restoration to ensure your music sounds polished and professional.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>Piano &amp; Keyboard Lessons</h3>
+            <p>
+              Teaching piano and keyboard online with 9+ years of experience. Lessons are tailored for students of all ages (5-60), from absolute beginners to aspiring performers, focusing on building confidence, creativity, and musical skill.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <div class="container">
+        <h2>My Work</h2>
+
+        <div class="portfolio-section">
+          <h3>Audio</h3>
+          <p>Produced music for labels like Saregama India and Zee Music artists. Explore some of my work:</p>
+          <a
+            href="https://open.spotify.com/artist/0r6146vcuIa0ATTO1iH1MS" 
+            class="spotify-btn" target="_blank"
+            rel="noopener noreferrer"
+          >
+            Listen on Spotify
+          </a>
+        </div>
+        <div class="portfolio-section">
+          <h3>Videos</h3>
+          <div class="videos-grid">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen title="Rick Astley"></iframe>
+            <iframe src="https://www.youtube.com/embed/ZRCdORJiUgU" allowfullscreen title="Google Year in Search"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <div class="container">
+        <h2>Testimonials</h2>
+        <div class="testimonial-box">
+          <p>
+            "Denish is an incredibly talented and professional music producer. He understood my vision perfectly and delivered a track that exceeded all my expectations. Highly recommended!" - Satisfied Client
+          </p>
+        </div>
+        <p>
+          Read more reviews on my
+          <a
+            href="https://www.fiverr.com/denishchouhan"
+            target="_blank"
+            class="fiverr-link"
+            rel="noopener">Fiverr Profile</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <h2>Get in Touch</h2>
+        <p>Ready to start your next audio project or learn piano?</p>
+        <a
+          href="https://www.fiverr.com/denishchouhan"
+          class="hire-btn"
+          target="_blank"
+          rel="noopener"
+        >Hire Denish on Fiverr</a>
+        <div class="highlight" style="margin-top:32px">
+          Let's bring your sound to life.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Denish. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
