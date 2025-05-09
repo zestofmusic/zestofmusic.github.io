@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Denish | Music Producer & Audio Engineer</title>
-  <meta name="description" content="Portfolio of Denish, a dedicated music producer, audio engineer, and piano teacher.">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
-  <!-- Remixicon for icons -->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Denish | Music Producer &amp; Audio Engineer
+  </title>
+  <meta content="Portfolio of Denish, a dedicated music producer, audio engineer, and piano teacher." name="description"/>
+  <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Montserrat:wght@700;900&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
   <style>
-    :root {
+   :root {
       --primary: #098e73;
       --primary-grad: linear-gradient(90deg,#098e73 0%,#16a085 100%);
       --accent-grad: linear-gradient(130deg,#21d4fd 0%,#b721ff 100%);
@@ -239,7 +239,6 @@
       transform: translateY(-6px) scale(1.035);
       z-index:3;
     }
-    .service-card:hover::before {opacity:.09;}
     .service-card h3 {
       margin: 0;
       color: var(--primary);
@@ -265,62 +264,173 @@
       margin-bottom: 2.5rem;
       margin-top: 0;
     }
+    .portfolio-section {
+      margin-bottom: 3rem; /* Added margin between Audio and Video sections */
+    }
     .portfolio-section h3 {
-      font-size: 1.25rem;
+      font-size: 1.65rem; /* Increased size for section subheadings */
       color: var(--primary);
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem; /* Adjusted margin */
+      display: flex;
+      align-items: center;
+      justify-content: center; /* Centered subheadings */
+    }
+    .portfolio-section h3 i {
+        margin-right: 0.7rem;
+        font-size: 1.8rem; /* Slightly larger icon */
     }
     .portfolio-section p {
       font-size: 1.07rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem; /* Adjusted margin */
       color: #34495ecc;
+      text-align: center; /* Centered paragraph */
+      max-width: 600px; /* Constrained width for better readability */
+      margin-left: auto;
+      margin-right: auto;
     }
-    .spotify-btn {
-      display: inline-block;
-      padding: 0.73rem 2.2rem;
-      font-weight: 600;
-      background: #fff;
-      border: 2px solid #1db95444;
-      border-radius: 0.54rem;
-      color: #1db954;
-      cursor: pointer;
+    .action-buttons-container { /* Container for Spotify/YT buttons */
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    /* New Audio Gallery Styles */
+    .audio-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 1.5rem;
+        padding: 0 1rem; /* Added padding for smaller screens */
+    }
+    .audio-card {
+        background: rgba(255, 255, 255, 0.7); /* Glassy effect */
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(228, 234, 241, 0.5); /* Softer border for glassy card */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+    }
+    .audio-card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 12px 45px rgba(24, 40, 72, 0.12);
+    }
+    .audio-card .audio-icon {
+        font-size: 2.8rem;
+        color: var(--primary);
+        margin-bottom: 0.8rem;
+        display: block;
+    }
+    .audio-card h4 { /* Title for audio (Audio #1) */
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--foreground);
+        margin-bottom: 1rem;
+    }
+    .audio-card audio {
+        width: 100%;
+        border-radius: 0.5rem; /* Rounded corners for player */
+        box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    }
+    /* Make default audio player controls match theme better */
+    audio::-webkit-media-controls-panel {
+      background-color: var(--muted);
+      color: var(--primary);
+    }
+    audio::-webkit-media-controls-play-button,
+    audio::-webkit-media-controls-mute-button,
+    audio::-webkit-media-controls-timeline,
+    audio::-webkit-media-controls-current-time-display,
+    audio::-webkit-media-controls-time-remaining-display {
+      filter: invert(0.1) sepia(1) hue-rotate(130deg) saturate(5); /* Attempt to color controls */
+    }
+
+
+    .spotify-btn, .youtube-btn { /* Combined base style for buttons */
+      display: inline-flex; /* Use flex for icon alignment */
+      align-items: center;
+      gap: 0.6rem; /* Space between icon and text */
+      padding: 0.8rem 2.3rem;
+      font-weight: 700; /* Bolder text */
+      border-radius: 0.6rem; /* Slightly more rounded */
       text-decoration: none;
-      font-size: 1.01rem;
+      font-size: 1.05rem; /* Larger font */
       transition: var(--transition-all);
-      box-shadow: 0 2px 8px 0 #1db95410;
+      box-shadow: 0 4px 15px 0 rgba(0,0,0,0.08);
+      border: 2px solid transparent; /* Prepare for border change on hover */
+      letter-spacing: 0.3px;
+    }
+    .spotify-btn i, .youtube-btn i {
+        font-size: 1.3rem; /* Larger icons */
+    }
+
+    .spotify-btn {
+      background: #1DB954; /* Spotify green */
+      color: #fff;
+      border-color: #1DB954;
     }
     .spotify-btn:hover {
-      background: #1db954;
+      background: #1ed760;
       color: #fff;
-      border-color: #1db954;
-      box-shadow: 0 6px 24px 0 #1db95450;
+      border-color: #1ed760;
+      box-shadow: 0 8px 25px 0 rgba(29, 185, 84, 0.4);
+      transform: translateY(-3px);
+    }
+
+    /* YouTube Button Style */
+    .youtube-btn {
+        background-color: #FF0000; /* YouTube Red */
+        color: white;
+        border-color: #FF0000;
+    }
+    .youtube-btn:hover {
+        background-color: #cc0000;
+        border-color: #cc0000;
+        color: white;
+        box-shadow: 0 8px 25px 0 rgba(255, 0, 0, 0.4);
+        transform: translateY(-3px);
     }
     .videos-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.7rem;
+      display: grid; /* Changed to grid for more control */
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive grid */
+      gap: 2rem; /* Increased gap */
       justify-content: center;
-      margin-top: 1.1rem;
+      margin-top: 1.5rem;
+      padding: 0 1rem; /* Added padding for smaller screens */
+    }
+    .video-wrapper { /* Wrapper for each iframe for consistent styling */
+        border-radius: var(--radius);
+        box-shadow: 0 8px 28px 0 rgba(9, 142, 115, 0.15);
+        overflow: hidden; /* Ensures iframe corners are rounded */
+        position: relative;
+        transition: transform .25s cubic-bezier(.53,-0.23,.35,1.36), box-shadow .25s;
+        background: #222; /* Fallback for iframe loading */
+    }
+    .video-wrapper:hover {
+      transform: scale(1.04) translateY(-5px);
+      box-shadow: 0 15px 40px 0 rgba(33, 203, 168, 0.5);
+      z-index:3;
     }
     .videos-grid iframe {
       border: none;
-      border-radius: 1.25rem;
-      box-shadow: 0 6px 22px 0 #098e7328;
       width: 100%;
-      max-width: 370px;
-      height: 210px;
-      background: #222;
-      object-fit: cover;
-      position: relative;
-      overflow: hidden;
-      transition:transform .22s cubic-bezier(.53,-0.23,.35,1.36), box-shadow .23s;
+      height: 210px; /* Maintained height */
+      display: block; /* Remove extra space below iframe */
     }
-    .videos-grid iframe:hover {
-      transform: scale(1.033) translateY(-3px);
-      box-shadow: 0 12px 34px 0 #21cba869;
-      z-index:3;
+    .playlist-embed-wrapper { /* Specific wrapper if playlist needs different aspect ratio or prominence */
+        grid-column: 1 / -1; /* Make playlist span full width if needed */
+        margin-top: 1rem; /* Space above playlist if it's full width */
     }
+    .playlist-embed-wrapper iframe {
+        height: 450px; /* Taller for playlist view */
+    }
+
+
     /* Testimonials */
     #testimonials {
       background: linear-gradient(115deg,rgba(31,226,189,0.06) 35%,#f3f5fa 100%);
@@ -380,23 +490,28 @@
       margin-bottom: 2rem;
     }
     .hire-btn {
-      display: inline-block;
+      display: inline-flex; /* Align icon */
+      align-items: center;
+      gap: 0.6rem; /* Space for icon */
       background: var(--primary-grad);
       color: #fff;
       border: none;
       border-radius: 0.65rem;
-      padding: 0.86em 2.28em;
-      font-size: 1.12rem;
+      padding: 0.9em 2.4em; /* Adjusted padding */
+      font-size: 1.15rem; /* Slightly larger */
       font-weight: 700;
       font-family:'Montserrat',sans-serif;
       letter-spacing:.2px;
       text-decoration: none;
-      box-shadow: 0 8px 32px 0 #1db95411;
+      box-shadow: 0 8px 32px 0 rgba(29, 185, 84, 0.15); /* Adjusted shadow color */
       cursor: pointer;
       transition: var(--transition-all);
       margin-bottom:1.9rem;
       position:relative;
       overflow:hidden;
+    }
+    .hire-btn i { /* Icon style for hire button */
+        font-size: 1.3rem;
     }
     .hire-btn::after {
       content:'';
@@ -405,11 +520,14 @@
       transition:opacity .2s;
     }
     .hire-btn:hover {
-      background: #21d4fd;
-      color: #333;
-      box-shadow: 0 17px 44px 0 #1284782c;
-      transform: translateY(-1.7px) scale(1.022);
+      background: linear-gradient(90deg, #21d4fd, #b721ff); /* Accent gradient on hover */
+      color: #fff; /* White text on gradient */
+      box-shadow: 0 17px 44px 0 rgba(33, 212, 253, 0.3); /* Shadow from new gradient */
+      transform: translateY(-2px) scale(1.03);
     }
+     .hire-btn:hover::after {
+        opacity: 0; /* Hide default overlay on hover if gradient is applied directly */
+     }
     #contact .highlight {
       color: #10846c;
       font-size: 1.14rem;
@@ -430,157 +548,341 @@
     @media (max-width: 1060px) {
       .container {padding-left:12px;padding-right:12px;}
       .service-grid {gap:1.2rem;}
-      .videos-grid {gap:1.1rem;}
+      .videos-grid {gap:1.5rem;} /* Adjusted gap */
+      .audio-gallery {gap: 1.5rem;} /* Adjusted gap */
     }
     @media (max-width: 950px) {
       .service-grid {flex-direction: column;}
-      .videos-grid {flex-direction: column;}
+      /* Keep videos and audio in grid for better layout on tablets */
       #about .about-content {padding: 1.3rem .8rem .6rem .8rem;}
     }
-    @media (max-width: 700px){
-      .brand {font-size: 1.41rem;}
-      nav ul{gap:10px;}
-      #hero h1 {font-size: 1.35rem;}
-      #about h2, #services h2, #portfolio h2, #testimonials h2, #contact h2 {font-size: 1.19rem;}
-      .service-card, .testimonial-box {padding: .8rem;}
-      .videos-grid iframe {height:165px;}
-      #about .about-content{padding:.82rem .3rem .48rem .3rem;}
+     @media (max-width: 700px){
+      .brand {font-size: 1.6rem;} /* Slightly increased for better visibility */
+      nav ul{gap:12px;} /* Adjusted gap */
+      nav a { font-size: 1rem; }
+      #hero h1 {font-size: 1.8rem; line-height: 1.3;} /* Adjusted hero title */
+      #hero p {font-size: 1.15rem;}
+      #about h2, #services h2, #portfolio h2, #testimonials h2, #contact h2 {font-size: 1.5rem; margin-bottom: 1.8rem;} /* Adjusted section titles */
+      .service-card, .testimonial-box {padding: 1rem;} /* Adjusted padding */
+      .videos-grid {grid-template-columns: 1fr; gap:1.2rem;} /* Single column for videos */
+      .audio-gallery {grid-template-columns: 1fr; gap:1.2rem;} /* Single column for audio */
+      .videos-grid iframe {height:180px;} /* Adjusted height */
+      .playlist-embed-wrapper iframe {height: 300px;}
+      #about .about-content{padding:.82rem .5rem .48rem .5rem;}
+      .spotify-btn, .youtube-btn, .hire-btn {font-size: 0.95rem; padding: 0.7rem 1.5rem;} /* Smaller buttons */
+      .portfolio-section h3 {font-size: 1.35rem;}
     }
     @media (max-width: 420px) {
-      .container {padding-left:3px;padding-right:3px;}
+      .container {padding-left:8px;padding-right:8px;} /* More padding */
+      .nav-flex { flex-direction: column; text-align: center; }
+      nav ul { justify-content: center; margin-top: 0.5rem;}
+      #hero h1 {font-size: 1.6rem;}
+      .portfolio-section h3 {font-size: 1.25rem;}
+      .spotify-btn i, .youtube-btn i, .hire-btn i {font-size: 1.1rem;}
     }
   </style>
-</head>
-<body>
-<header class="fade-in">
-  <div class="container nav-flex">
-    <a href="#hero" class="brand">Denish</a>
+ </head>
+ <body>
+  <header class="fade-in">
+   <div class="container nav-flex">
+    <a class="brand" href="#hero">
+     Denish
+    </a>
     <nav>
-      <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+     <ul>
+      <li>
+       <a href="#hero">
+        Home
+       </a>
+      </li>
+      <li>
+       <a href="#about">
+        About
+       </a>
+      </li>
+      <li>
+       <a href="#services">
+        Services
+       </a>
+      </li>
+      <li>
+       <a href="#portfolio">
+        Portfolio
+       </a>
+      </li>
+      <li>
+       <a href="#testimonials">
+        Testimonials
+       </a>
+      </li>
+      <li>
+       <a href="#contact">
+        Contact
+       </a>
+      </li>
+     </ul>
     </nav>
-  </div>
-</header>
-<main style="flex:1">
-  <!-- HERO -->
-  <section id="hero" class="fade-up">
+   </div>
+  </header>
+  <main style="flex:1">
+   <section class="fade-up" id="hero">
     <div class="container">
-      <h1>Dedicated music producer, audio engineer, and piano teacher.</h1>
-      <p>Helping people bring their sound to life.</p>
+     <h1>
+      Dedicated music producer, audio engineer, and piano teacher.
+     </h1>
+     <p>
+      Helping people bring their sound to life.
+     </p>
     </div>
-  </section>
-  <!-- ABOUT -->
-  <section id="about" class="fade-up">
+   </section>
+   <section class="fade-up" id="services">
+    <div class="container">
+     <h2>
+      My Services
+     </h2>
+     <div class="service-grid">
+      <div class="service-card fade-up" style="transition-delay:.07s">
+       <h3>
+        <i class="ri-music-2-fill">
+        </i>
+        Music Production
+       </h3>
+       <p>
+        Producing original music for clients, tailored to your vision and genre. From concept to final track, I bring creativity and technical expertise to every project.
+       </p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:.13s">
+       <h3>
+        <i class="ri-equalizer-fill">
+        </i>
+        Audio Engineering
+       </h3>
+       <p>
+        Providing comprehensive audio engineering services including mixing, mastering, and audio restoration to ensure your music sounds polished and professional.
+       </p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:.19s">
+       <h3>
+        <i class="ri-piano-fill">
+        </i>
+        Piano &amp; Keyboard Lessons
+       </h3>
+       <p>
+        Teaching piano and keyboard online with 9+ years of experience. Lessons are tailored for students of all ages (5-60), from absolute beginners to aspiring performers, focusing on building confidence, creativity, and musical skill.
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="fade-up" id="portfolio">
+    <div class="container">
+     <h2>
+      My Work
+     </h2>
+     <div class="portfolio-section fade-up">
+      <h3>
+       <i class="ri-headphone-fill">
+       </i>
+       Audio Showcase
+      </h3>
+      <p>
+       Listen to a selection of my productions. For the best experience, use headphones!
+       <br/>
+       <em>
+        (Note: Playback depends on your browser's support for Google Drive direct audio streaming.)
+       </em>
+      </p>
+      <div class="audio-gallery">
+       <div class="audio-card fade-up" style="transition-delay:.1s">
+        <i class="ri-music-2-line audio-icon">
+        </i>
+        <h4>
+         Audio #1
+        </h4>
+        <audio controls="" src="https://docs.google.com/uc?export=open&amp;id=1fTGbAqrLLVpBuWrPIOzS3Mn2QxrsWaBs" title="Audio Sample 1">
+        </audio>
+       </div>
+       <div class="audio-card fade-up" style="transition-delay:.15s">
+        <i class="ri-music-2-line audio-icon">
+        </i>
+        <h4>
+         Audio #2
+        </h4>
+        <audio controls="" src="https://docs.google.com/uc?export=open&amp;id=1JZBE4GWFyUy4nJfNA-qVzT96bcQXwIxJ" title="Audio Sample 2">
+        </audio>
+       </div>
+       <div class="audio-card fade-up" style="transition-delay:.2s">
+        <i class="ri-music-2-line audio-icon">
+        </i>
+        <h4>
+         Audio #3
+        </h4>
+        <audio controls="" src="https://docs.google.com/uc?export=open&amp;id=1Wen7DiC92OID0ijyTuvzz7_iH92vb04q" title="Audio Sample 3">
+        </audio>
+       </div>
+       <div class="audio-card fade-up" style="transition-delay:.25s">
+        <i class="ri-music-2-line audio-icon">
+        </i>
+        <h4>
+         Audio #4
+        </h4>
+        <audio controls="" src="https://docs.google.com/uc?export=open&amp;id=1w0L6VststR7Q9CmXLBVTB6mxkXKYS3IT" title="Audio Sample 4">
+        </audio>
+       </div>
+       <div class="audio-card fade-up" style="transition-delay:.3s">
+        <i class="ri-music-2-line audio-icon">
+        </i>
+        <h4>
+         Audio #5
+        </h4>
+        <audio controls="" src="https://docs.google.com/uc?export=open&amp;id=1kMGhbcw9HOJUlYDu4p7do9G-TZRCiiPF" title="Audio Sample 5">
+        </audio>
+       </div>
+      </div>
+      <div class="action-buttons-container fade-up" style="transition-delay:.35s">
+       <a class="spotify-btn" href="https://open.spotify.com/artist/6tn0ZmFEInAMG2pQrAbmYr?si=tBWvyYZXSceSGlTUJmCoIQ&amp;nd=1&amp;dlsi=d7544e228b6445ae" rel="noopener noreferrer" target="_blank">
+        <i class="ri-spotify-fill">
+        </i>
+        Listen on Spotify
+       </a>
+      </div>
+     </div>
+     <div class="portfolio-section fade-up" style="transition-delay:.4s">
+      <h3>
+       <i class="ri-vidicon-fill">
+       </i>
+       Video Gallery
+      </h3>
+      <p>
+       Check out some of my video projects and performances. More on my YouTube channel!
+      </p>
+      <div class="videos-grid">
+       <div class="video-wrapper fade-up" style="transition-delay:.45s">
+        <iframe allowfullscreen="" src="https://www.youtube.com/embed/gVt8KtDC9kQ" title="Kal Ho Na Ho - Piano Instrumental | Rain LOFI 2023">
+        </iframe>
+       </div>
+       <div class="video-wrapper fade-up" style="transition-delay:.5s">
+        <iframe allowfullscreen="" src="https://www.youtube.com/embed/vmvXALIo-Lw" title="Gulabi Aankhen Extended Version 2017 | Lyrical Instrumental">
+        </iframe>
+       </div>
+       <div class="video-wrapper fade-up" style="transition-delay:.55s">
+        <iframe allowfullscreen="" src="https://www.youtube.com/embed/giYtf_2QYpE" title="Kesariya Karoke | Hindi Lyrics">
+        </iframe>
+       </div>
+       <div class="video-wrapper fade-up" style="transition-delay:.6s">
+        <iframe allowfullscreen="" src="https://www.youtube.com/embed/d9hkCtCbIsw" title="Baarish Lete Aana Instrumental - Denish Shukla">
+        </iframe>
+       </div>
+      </div>
+      <div class="portfolio-section fade-up" style="transition-delay:.65s; margin-top: 2.5rem;">
+       <h3>
+        <i class="ri-play-list-2-fill">
+        </i>
+        Featured Playlist
+       </h3>
+       <p>
+        Enjoy a curated playlist of my work.
+       </p>
+       <div class="videos-grid playlist-embed-wrapper">
+        <div class="video-wrapper fade-up" style="transition-delay:.7s">
+         <iframe allowfullscreen="" src="https://www.youtube.com/embed/videoseries?list=PLGmvYT3_OQUYSlORyfhfi4TqnWSTCdOq7" title="My Music Playlist">
+         </iframe>
+        </div>
+       </div>
+      </div>
+      <div class="action-buttons-container fade-up" style="transition-delay:.75s">
+       <a class="youtube-btn" href="https://www.youtube.com/@ZestofMusic" rel="noopener noreferrer" target="_blank">
+        <i class="ri-youtube-fill">
+        </i>
+        See more on Zest of Music (ZM studio)'s YouTube
+       </a>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="fade-up" id="about">
     <div class="about-content">
-      <h2>About Me</h2>
-      <div>
-      <p>With over 9+ years in the music industry, I am a passionate music producer, audio engineer, and piano teacher. My journey in music has been driven by a deep love for sound and a commitment to helping artists and students achieve their musical aspirations.</p>
-      <p>I completed a Pro Music Production course at Mumbai Music Institute (MMI) in 2019, which significantly honed my technical skills and creative approach. A particularly memorable milestone was performing live with legendary music composer Pritam Da as part of a Guinness World Record 1,000-piece band – an incredible honor that broadened my perspective on large-scale musical productions.</p>
-      <p>My professional experience includes working as a music assistant with Abhijeet Sawant (first Indian Idol winner), serving as an audio engineer for Sony TV, producing music for labels like Saregama India and Zee Music artists, and collaborating with a diverse range of label artists and independent musicians.</p>
-      <p class="highlight">My goal is to help you bring your sound to life.</p>
-      </div>
+     <h2>
+      About Me
+     </h2>
+     <div>
+      <p>
+       With over 9+ years in the music industry, I am a passionate music producer, audio engineer, and piano teacher. My journey in music has been driven by a deep love for sound and a commitment to helping artists and students achieve their musical aspirations.
+      </p>
+      <p>
+       I completed a Pro Music Production course at Mumbai Music Institute (MMI) in 2019, which significantly honed my technical skills and creative approach. A particularly memorable milestone was performing live with legendary music composer Pritam Da as part of a Guinness World Record 1,000-piece band – an incredible honor that broadened my perspective on large-scale musical productions.
+      </p>
+      <p>
+       My professional experience includes working as a music assistant with Abhijeet Sawant (first Indian Idol winner), serving as an audio engineer for Sony TV, producing music for labels like Saregama India and Zee Music artists, and collaborating with a diverse range of label artists and independent musicians.
+      </p>
+      <p class="highlight">
+       My goal is to help you bring your sound to life.
+      </p>
+     </div>
     </div>
-  </section>
-  <!-- SERVICES -->
-  <section id="services" class="fade-up">
+   </section>
+   <section class="fade-up" id="contact">
     <div class="container">
-      <h2>My Services</h2>
-      <div class="service-grid">
-        <div class="service-card fade-up" style="transition-delay:.07s">
-          <h3><i class="ri-music-2-fill"></i>Music Production</h3>
-          <p>Producing original music for clients, tailored to your vision and genre. From concept to final track, I bring creativity and technical expertise to every project.</p>
-        </div>
-        <div class="service-card fade-up" style="transition-delay:.13s">
-          <h3><i class="ri-equalizer-fill"></i>Audio Engineering</h3>
-          <p>Providing comprehensive audio engineering services including mixing, mastering, and audio restoration to ensure your music sounds polished and professional.</p>
-        </div>
-        <div class="service-card fade-up" style="transition-delay:.19s">
-          <h3><i class="ri-piano-fill"></i>Piano &amp; Keyboard Lessons</h3>
-          <p>Teaching piano and keyboard online with 9+ years of experience. Lessons are tailored for students of all ages (5-60), from absolute beginners to aspiring performers, focusing on building confidence, creativity, and musical skill.</p>
-        </div>
-      </div>
+     <h2>
+      Get in Touch
+     </h2>
+     <p>
+      Ready to start your next audio project or learn piano?
+     </p>
+     <a class="hire-btn fade-up" href="https://www.fiverr.com/s/WEjvK05" rel="noopener" target="_blank">
+      <i class="ri-send-plane-2-fill">
+      </i>
+      Hire Denish on Fiverr
+     </a>
+     <div class="highlight">
+      Let's bring your sound to life.
+     </div>
     </div>
-  </section>
-  <!-- PORTFOLIO -->
-  <section id="portfolio" class="fade-up">
-    <div class="container">
-      <h2>My Work</h2>
-      <div class="portfolio-section">
-        <h3><i class="ri-radio-2-line"></i> Audio</h3>
-        <p>Produced music for labels like Saregama India and Zee Music artists. Explore some of my work:</p>
-        <a href="https://open.spotify.com/artist/0r6146vcuIa0ATTO1iH1MS" class="spotify-btn fade-up" target="_blank" rel="noopener noreferrer"><i class="ri-spotify-fill"></i>Listen on Spotify</a>
-      </div>
-      <div class="portfolio-section">
-        <h3><i class="ri-play-circle-line"></i> Videos</h3>
-        <div class="videos-grid">
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen title="Rick Astley"></iframe>
-          <iframe src="https://www.youtube.com/embed/ZRCdORJiUgU" allowfullscreen title="Google Year in Search"></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- TESTIMONIALS -->
-  <section id="testimonials" class="fade-up">
-    <div class="container">
-      <h2>Testimonials</h2>
-      <div class="testimonial-box fade-up">
-        <p>"Denish is an incredibly talented and professional music producer. He understood my vision perfectly and delivered a track that exceeded all my expectations. Highly recommended!" - Satisfied Client</p>
-      </div>
-      <p>Read more reviews on my <a href="https://www.fiverr.com/denishchouhan" target="_blank" class="fiverr-link" rel="noopener">Fiverr Profile</a>.</p>
-    </div>
-  </section>
-  <!-- CONTACT -->
-  <section id="contact" class="fade-up">
-    <div class="container">
-      <h2>Get in Touch</h2>
-      <p>Ready to start your next audio project or learn piano?</p>
-      <a href="https://www.fiverr.com/denishchouhan" class="hire-btn fade-up" target="_blank" rel="noopener"><i class="ri-send-plane-2-fill"></i> Hire Denish on Fiverr</a>
-      <div class="highlight">Let's bring your sound to life.</div>
-    </div>
-  </section>
-</main>
-<footer class="fade-up">
-  <div class="container">
-    <p>© 2025 Denish. All rights reserved.</p>
-  </div>
-</footer>
-<script>
-// Section reveal on scroll
+   </section>
+  </main>
+  <footer class="fade-up">
+   <div class="container">
+    <p>
+     © 2025 Denish. All rights reserved.
+    </p>
+   </div>
+  </footer>
+  <script>
+   // Section reveal on scroll
 function revealOnScroll() {
   const reveals = document.querySelectorAll('.fade-up, .fade-in');
   const winH = window.innerHeight;
   reveals.forEach(el => {
     const top = el.getBoundingClientRect().top;
-    if(top < winH - 90) el.classList.add('visible');
-    else if(top > winH) el.classList.remove('visible');
+    // Adjust offset for reveal, 60px from bottom of viewport
+    if(top < winH - 60) el.classList.add('visible');
+    // Optional: remove visible class if element scrolls out of view upwards
+    // else if(top > winH) el.classList.remove('visible'); 
   });
 }
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(revealOnScroll, 220); // in case above fold loaded instantly
   window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll();
-});
-// Smooth scroll offset for navigation
-const navLinks = document.querySelectorAll('nav a[href^="#"]');
-navLinks.forEach(link => {
-  link.addEventListener('click', function(e) {
-    const id = this.getAttribute('href').slice(1);
-    const target = document.getElementById(id);
-    if(target) {
-      e.preventDefault();
-      window.scrollTo({
-        top: target.offsetTop - 38,
-        behavior: 'smooth'
-      });
-    }
+  revealOnScroll(); // Initial check
+
+  // Smooth scroll offset for navigation
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  const headerOffset = document.querySelector('header') ? document.querySelector('header').offsetHeight + 10 : 60; // Dynamic offset based on header height or fixed
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const id = this.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if(target) {
+        e.preventDefault();
+        window.scrollTo({
+          top: target.offsetTop - headerOffset,
+          behavior: 'smooth'
+        });
+      }
+    });
   });
 });
-</script>
-</body>
+  </script>
+ </body>
 </html>
