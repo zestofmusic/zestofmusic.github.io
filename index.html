@@ -3,655 +3,838 @@
  <head>
   <meta charset="utf-8"/>
   <title>
-   Denish | Music Producer &amp; Audio Engineer
+   Denish | Music Producer & Audio Engineer
   </title>
   <meta content="Portfolio of Denish, a dedicated music producer, audio engineer, and piano teacher." name="description"/>
   <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Montserrat:wght@700;900&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@700;900&family=Pacifico&display=swap" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
   <style>
+    /* CSS Variables for theming and consistency */
    :root {
-      --primary: #098e73;
-      --primary-grad: linear-gradient(90deg,#098e73 0%,#16a085 100%);
-      --accent-grad: linear-gradient(130deg,#21d4fd 0%,#b721ff 100%);
-      --bg: #f6f7fb;
-      --muted: #f3f5fa;
-      --muted-foreground: #596273;
-      --foreground: #222;
-      --border: #e4eaf1;
-      --shadow: 0 8px 32px rgba(24,40,72,0.06);
-      --glass: rgba(255,255,255,0.85);
-      --radius: 1.27rem;
-      --transition-all: all 0.32s cubic-bezier(.4,0,.2,1);
+      --primary-color: #00a896; /* A slightly brighter teal */
+      --primary-hover: #007f73; /* Darker shade for hover */
+      --secondary-color: #ff6b6b; /* A vibrant coral for accents */
+      --accent-gradient: linear-gradient(130deg, #4facfe 0%, #00f2fe 100%); /* Blueish accent gradient */
+      --background-color: #f0f4f8; /* Lighter, softer background */
+      --card-background: #ffffff;
+      --text-color: #333;
+      --muted-text-color: #5f6c7b; /* Softer muted text */
+      --border-color: #dde4eb;
+      --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.05);
+      --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.08);
+      --shadow-strong: 0 12px 35px rgba(0, 0, 0, 0.1);
+      --border-radius-sm: 0.5rem;
+      --border-radius-md: 0.8rem;
+      --border-radius-lg: 1.25rem;
+      --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --font-primary: 'Inter', Arial, sans-serif;
+      --font-headings: 'Montserrat', sans-serif;
+      --font-brand: 'Pacifico', cursive; /* New font for the brand */
     }
+
+    /* General Reset and Body Styles */
     html,body {
-      font-family: 'Inter',Arial,sans-serif;
-      background: var(--bg);
-      color: var(--foreground);
+      font-family: var(--font-primary);
+      background-color: var(--background-color);
+      color: var(--text-color);
       margin: 0;
       padding: 0;
       scroll-behavior: smooth;
+      line-height: 1.6;
     }
     body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
-    /* Fancy header */
-    header {
-      background: var(--glass);
-      position: sticky; top: 0; left: 0; right: 0; z-index: 10;
-      box-shadow: 0 4px 24px 0 rgba(30,40,90,0.10),0 1.5px 3px 0 #b7ebf0;
-      -webkit-backdrop-filter: blur(15px);
-      backdrop-filter: blur(15px);
-      transition: var(--transition-all);
-      border-bottom: 1px solid var(--border);
-    }
+
+    /* Container for consistent layout */
     .container {
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      padding-left: 1.3rem;
-      padding-right: 1.3rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      box-sizing: border-box; /* Ensures padding doesn't add to width */
+    }
+
+    /* Header Styling - Enhanced */
+    header {
+      background: rgba(255, 255, 255, 0.85); /* Glassmorphism effect */
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      position: sticky; top: 0; left: 0; right: 0; z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.8rem 0; /* Adjusted padding */
+      transition: var(--transition-smooth);
     }
     .nav-flex {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap:1.2rem;
+      gap: 1.5rem;
     }
+
+    /* Brand Logo - More engaging */
     .brand {
-      font-family: 'Montserrat',sans-serif;
-      font-size: 2.25rem;
-      font-weight: 900;
-      background: var(--primary-grad);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-fill-color: transparent;
+      font-family: var(--font-brand); /* Using Pacifico */
+      font-size: 2.5rem; /* Increased size */
+      font-weight: normal; /* Pacifico is already styled */
+      color: var(--primary-color);
       text-decoration: none;
-      letter-spacing: 1px;
-      transition: opacity .2s;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: flex;
+      align-items: center;
     }
-    .brand:hover {opacity:.87;}
+    .brand i { /* Optional: Icon next to brand name */
+        margin-right: 0.5rem;
+        font-size: 2.2rem;
+        color: var(--secondary-color);
+    }
+    .brand:hover {
+      color: var(--primary-hover);
+      transform: scale(1.03); /* Slight scale on hover */
+    }
+
+    /* Navigation Menu - Enhanced */
     nav ul {
       display: flex;
-      gap: 26px;
+      gap: 1.8rem; /* Increased gap */
       list-style: none;
       margin: 0;
       padding: 0;
     }
     nav a {
-      color: var(--foreground);
+      color: var(--text-color);
       text-decoration: none;
-      font-size: 1.06rem;
-      font-weight: 500;
-      padding: 2px 0;
+      font-size: 1.05rem; /* Slightly larger font */
+      font-weight: 600; /* Bolder nav links */
+      padding: 0.5rem 0.2rem; /* Added vertical padding for better click/tap area */
       position: relative;
-      transition: color .19s;
+      transition: color 0.3s ease;
+      letter-spacing: 0.3px;
     }
-    nav a:after {
+    nav a::after { /* Underline effect */
       content: '';
       display: block;
       position: absolute;
-      left: 0; bottom: -3px;
-      width: 100%;
-      height: 2.7px;
-      background: var(--primary-grad);
+      left: 0; bottom: 0; /* Positioned at the bottom */
+      width: 0; /* Starts with no width */
+      height: 2.5px;
+      background: var(--secondary-color); /* Using accent color */
       border-radius: 2px;
-      opacity: 0;
-      transform: scaleX(.2);
-      transition: var(--transition-all);
+      transition: width 0.35s cubic-bezier(0.45, 0.05, 0.55, 0.95);
     }
-    nav a:hover {color: #16a085;}
-    nav a:hover:after {opacity:1;transform:scaleX(1);}
+    nav a:hover {
+      color: var(--primary-color);
+    }
+    nav a:hover::after,
+    nav a.active::after { /* Style for active link */
+      width: 100%;
+    }
+    nav a.active {
+        color: var(--primary-color);
+    }
+
+    /* Hamburger Menu for Mobile */
+    .menu-toggle {
+        display: none; /* Hidden by default */
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+
 
     /* ========== Animations ========== */
     .fade-up {
       opacity: 0;
-      transform: translateY(36px);
-      transition: opacity .65s cubic-bezier(.23,1,.32,1), transform .65s cubic-bezier(.23,1,.32,1);
-      will-change:opacity, transform;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      will-change: opacity, transform;
     }
     .fade-up.visible {
       opacity: 1;
-      transform: none;
+      transform: translateY(0);
     }
     .fade-in {
       opacity: 0;
-      transition: opacity .75s cubic-bezier(.17,.67,.83,.67);
+      transition: opacity 0.8s ease-out;
     }
     .fade-in.visible {
       opacity: 1;
     }
+
     /* Hero Section */
     #hero {
-      background: linear-gradient(110deg,rgba(2, 200, 150,0.07) 10%, rgba(140,210,255,.12) 60%, #f7f9ff 95%);
-      padding: 5.5rem 0 3.2rem 0;
+      background: linear-gradient(120deg, rgba(0, 168, 150, 0.08) 0%, rgba(173, 216, 230, 0.15) 50%, rgba(240, 244, 248, 0.5) 100%);
+      padding: 6rem 0 4rem 0;
       text-align: center;
+      overflow: hidden; /* For any potential overflow from animations */
     }
     #hero h1 {
-      font-family: 'Montserrat',sans-serif;
-      font-size: 2.88rem;
+      font-family: var(--font-headings);
+      font-size: 3.2rem; /* Larger heading */
       font-weight: 900;
-      letter-spacing: -.5px;
-      background: var(--primary-grad);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-fill-color: transparent;
-      margin-bottom: 1.2rem;
+      letter-spacing: -0.5px;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
       margin-top: 0;
-      animation: blurFade 1.6s cubic-bezier(.4,0,.2,1);
+      animation: slideInDown 1s ease-out forwards;
     }
     #hero p {
-      color: var(--muted-foreground);
-      font-size: 1.4rem;
+      color: var(--muted-text-color);
+      font-size: 1.3rem; /* Slightly larger paragraph */
       font-weight: 500;
-      max-width: 700px;
-      margin:0 auto;
+      max-width: 750px;
+      margin: 0 auto 2rem auto;
+      animation: fadeInText 1.5s 0.5s ease-out forwards;
+      opacity: 0; /* Start hidden for animation */
     }
-    @keyframes blurFade {
-      0%{filter:blur(9px);opacity:0;transform:translateY(65px)}
-      80%{filter:blur(2px);opacity:.92;}
-      100%{filter:none;opacity:1;transform:none}
+
+    @keyframes slideInDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
+    @keyframes fadeInText {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Section General Styling */
+    section {
+        padding: 4rem 0;
+    }
+    section:nth-child(even) { /* Alternating section backgrounds */
+        background-color: var(--card-background);
+    }
+    section h2 {
+      text-align: center;
+      font-family: var(--font-headings);
+      font-size: 2.5rem; /* Consistent section title size */
+      font-weight: 700;
+      margin-bottom: 3rem;
+      margin-top: 0;
+      color: var(--primary-color);
+      letter-spacing: -0.5px;
+      position: relative;
+    }
+    /* Decorative underline for section titles */
+    section h2::after {
+        content: '';
+        display: block;
+        width: 70px;
+        height: 4px;
+        background-color: var(--secondary-color);
+        margin: 0.5rem auto 0;
+        border-radius: 2px;
+    }
+
+
     /* About Section */
     #about {
-      padding: 3.8rem 0 0.5rem 0;
-    }
-    #about h2 {
-      text-align: center;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.15rem;
-      font-weight: 900;
-      margin-bottom: 2.2rem;
-      margin-top: 0;
-      letter-spacing: -.8px;
+      padding-top: 4rem; /* Adjusted padding */
     }
     #about .about-content {
-      max-width: 700px;
+      max-width: 750px;
       margin: 0 auto;
-      color: #2d3748cc;
-      font-size: 1.07rem;
-      line-height: 1.7;
-      background: #fff;
-      border-radius: var(--radius);
-      box-shadow: 0 8px 26px -8px rgba(34,60,80,0.10);
-      padding: 2.3rem 2.2rem 1.1rem 2.2rem;
-      position: relative;
+      color: #4a5568; /* Slightly darker for better readability */
+      font-size: 1.1rem;
+      line-height: 1.75;
+      background: var(--card-background);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-medium);
+      padding: 2.5rem;
+      text-align: left; /* Align text left for readability */
+    }
+    #about .about-content h2 { /* Local H2 for About Me title */
+        text-align: left;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    #about .about-content h2::after { /* Adjust underline for local H2 */
+        margin-left: 0;
+        margin-right: auto;
     }
     #about .about-content .highlight {
-      color: #099b75;
+      color: var(--primary-hover);
       font-weight: 700;
-      font-size: 1.12rem;
-      margin-top: 1.7rem;
+      font-size: 1.15rem;
+      margin-top: 1.8rem;
+      display: block; /* Make it a block for better spacing */
     }
-    /* Services */
+
+    /* Services Section */
     #services {
-      background: var(--muted);
-      padding: 4.5rem 0 3.5rem 0;
-      margin-top: 2.3rem;
-    }
-    #services h2 {
-      text-align: center;
-      font-size: 2.03rem;
-      font-family:'Montserrat',sans-serif;
-      font-weight: bold;
-      margin-bottom: 2.8rem;
-      margin-top: 0;
+      /* background-color: var(--background-color); Uses default even section background */
     }
     .service-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2.1rem;
-      justify-content: center;
+      display: grid; /* Using grid for better alignment */
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
     .service-card {
-      background: #fff;
-      box-shadow: 0 8px 40px -10px #05e8c53f;
-      border: 1.5px solid var(--border);
-      min-width: 260px;
-      max-width: 350px;
-      border-radius: var(--radius);
-      padding: 2.4rem 1.5rem 1.5rem 1.5rem;
-      position:relative;
-      cursor:pointer;
-      overflow:hidden;
-      display:flex; flex-direction:column; gap:1.2rem;
-      transition: box-shadow 0.22s, transform .2s;
-      flex: 1 1 260px;
-      z-index: 2;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      background: var(--accent-grad);
-      z-index: 1;
-      transition: opacity .18s;
-      pointer-events: none;
+      background: var(--card-background);
+      box-shadow: var(--shadow-light);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-md);
+      padding: 2rem 1.8rem;
+      display:flex; flex-direction:column; gap:1rem;
+      transition: var(--transition-smooth);
+      text-align: left;
     }
     .service-card:hover {
-      box-shadow: 0 12px 70px 0 #c2d6f9b3, 0 8px 32px 0 #05e8c573;
-      transform: translateY(-6px) scale(1.035);
-      z-index:3;
+      box-shadow: var(--shadow-strong);
+      transform: translateY(-8px);
+      border-left: 5px solid var(--secondary-color); /* Accent border on hover */
     }
     .service-card h3 {
-      margin: 0;
-      color: var(--primary);
-      font-size: 1.38rem;
+      margin: 0 0 0.5rem 0;
+      color: var(--primary-color);
+      font-size: 1.5rem;
       font-weight: 700;
-      letter-spacing:-.2px;
-      position: relative;
-    }
-    .service-card h3 i {
-      margin-right: 9px;
-      font-size:1.23rem;
-    }
-    .service-card p {margin: 0.7rem 0 0 0; font-size: 1.03rem;color: #444e;}
-    /* Portfolio/Work */
-    #portfolio {
-      padding: 3.5rem 0 0 0;
-    }
-    #portfolio h2 {
-      text-align: center;
-      font-size: 2.02rem;
-      font-family:'Montserrat',sans-serif;
-      font-weight: bold;
-      margin-bottom: 2.5rem;
-      margin-top: 0;
-    }
-    .portfolio-section {
-      margin-bottom: 3rem; /* Added margin between Audio and Video sections */
-    }
-    .portfolio-section h3 {
-      font-size: 1.65rem; /* Increased size for section subheadings */
-      color: var(--primary);
-      font-weight: 700;
-      margin-bottom: 1rem; /* Adjusted margin */
+      font-family: var(--font-headings);
       display: flex;
       align-items: center;
-      justify-content: center; /* Centered subheadings */
+    }
+    .service-card h3 i {
+      margin-right: 0.8rem;
+      font-size:1.8rem; /* Larger icons */
+      color: var(--secondary-color); /* Icon color */
+      background: linear-gradient(45deg, var(--secondary-color), #ff8a8a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1; /* Align icon better */
+    }
+    .service-card p {
+        margin: 0;
+        font-size: 1rem;
+        color: var(--muted-text-color);
+        line-height: 1.6;
+    }
+
+    /* Portfolio/Work Section */
+    #portfolio {
+        /* Uses default odd section background */
+    }
+    .portfolio-section {
+      margin-bottom: 3.5rem;
+    }
+    .portfolio-section h3 { /* Subheadings for Audio/Video */
+      font-size: 1.8rem;
+      color: var(--primary-hover);
+      font-weight: 700;
+      font-family: var(--font-headings);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
     .portfolio-section h3 i {
-        margin-right: 0.7rem;
-        font-size: 1.8rem; /* Slightly larger icon */
+        margin-right: 0.8rem;
+        font-size: 2rem;
+        color: var(--secondary-color);
     }
-    .portfolio-section p {
-      font-size: 1.07rem;
-      margin-bottom: 1.5rem; /* Adjusted margin */
-      color: #34495ecc;
-      text-align: center; /* Centered paragraph */
-      max-width: 600px; /* Constrained width for better readability */
+    .portfolio-section > p { /* Paragraph directly under portfolio-section */
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: var(--muted-text-color);
+      text-align: center;
+      max-width: 650px;
       margin-left: auto;
       margin-right: auto;
     }
-    .action-buttons-container { /* Container for Spotify/YT buttons */
+    .action-buttons-container {
         display: flex;
         justify-content: center;
         gap: 1.5rem;
-        margin-top: 1.5rem;
+        margin-top: 2rem;
         flex-wrap: wrap;
     }
 
-    /* New Audio Gallery Styles */
+    /* Audio Gallery */
     .audio-gallery {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
-        margin-top: 1.5rem;
-        padding: 0 1rem; /* Added padding for smaller screens */
+        margin-top: 2rem;
     }
     .audio-card {
-        background: rgba(255, 255, 255, 0.7); /* Glassy effect */
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        border-radius: var(--radius);
-        padding: 1.5rem;
-        box-shadow: var(--shadow);
-        border: 1px solid rgba(228, 234, 241, 0.5); /* Softer border for glassy card */
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        border-radius: var(--border-radius-md);
+        padding: 1.8rem 1.5rem;
+        box-shadow: var(--shadow-light);
+        border: 1px solid var(--border-color);
+        transition: var(--transition-smooth);
         text-align: center;
     }
     .audio-card:hover {
-        transform: translateY(-8px) scale(1.03);
-        box-shadow: 0 12px 45px rgba(24, 40, 72, 0.12);
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: var(--shadow-medium);
     }
     .audio-card .audio-icon {
-        font-size: 2.8rem;
-        color: var(--primary);
-        margin-bottom: 0.8rem;
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
         display: block;
     }
-    .audio-card h4 { /* Title for audio (Audio #1) */
-        font-size: 1.2rem;
+    .audio-card h4 {
+        font-size: 1.25rem;
         font-weight: 700;
-        color: var(--foreground);
-        margin-bottom: 1rem;
+        color: var(--text-color);
+        margin-bottom: 1.2rem;
+        font-family: var(--font-headings);
     }
     .audio-card audio {
         width: 100%;
-        border-radius: 0.5rem; /* Rounded corners for player */
-        box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+        border-radius: var(--border-radius-sm);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
-    /* Make default audio player controls match theme better */
     audio::-webkit-media-controls-panel {
-      background-color: var(--muted);
-      color: var(--primary);
+      background-color: #e9ecef; /* Lighter panel */
     }
     audio::-webkit-media-controls-play-button,
-    audio::-webkit-media-controls-mute-button,
-    audio::-webkit-media-controls-timeline,
-    audio::-webkit-media-controls-current-time-display,
-    audio::-webkit-media-controls-time-remaining-display {
-      filter: invert(0.1) sepia(1) hue-rotate(130deg) saturate(5); /* Attempt to color controls */
+    audio::-webkit-media-controls-mute-button {
+      color: var(--primary-color); /* Theming buttons */
+    }
+     audio::-webkit-media-controls-timeline {
+      background-color: #ced4da; /* Theming timeline */
+      border-radius: var(--border-radius-sm);
     }
 
 
-    .spotify-btn, .youtube-btn { /* Combined base style for buttons */
-      display: inline-flex; /* Use flex for icon alignment */
+    /* Spotify/YouTube Buttons */
+    .spotify-btn, .youtube-btn, .primary-btn {
+      display: inline-flex;
       align-items: center;
-      gap: 0.6rem; /* Space between icon and text */
-      padding: 0.8rem 2.3rem;
-      font-weight: 700; /* Bolder text */
-      border-radius: 0.6rem; /* Slightly more rounded */
+      gap: 0.7rem;
+      padding: 0.9rem 2rem;
+      font-weight: 600;
+      border-radius: var(--border-radius-sm);
       text-decoration: none;
-      font-size: 1.05rem; /* Larger font */
-      transition: var(--transition-all);
-      box-shadow: 0 4px 15px 0 rgba(0,0,0,0.08);
-      border: 2px solid transparent; /* Prepare for border change on hover */
-      letter-spacing: 0.3px;
+      font-size: 1rem;
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-light);
+      border: 2px solid transparent;
+      letter-spacing: 0.2px;
+      text-transform: uppercase; /* Uppercase for buttons */
+      font-family: var(--font-headings);
     }
-    .spotify-btn i, .youtube-btn i {
-        font-size: 1.3rem; /* Larger icons */
+    .spotify-btn i, .youtube-btn i, .primary-btn i {
+        font-size: 1.4rem;
     }
 
     .spotify-btn {
-      background: #1DB954; /* Spotify green */
+      background: #1DB954;
       color: #fff;
       border-color: #1DB954;
     }
     .spotify-btn:hover {
-      background: #1ed760;
-      color: #fff;
-      border-color: #1ed760;
-      box-shadow: 0 8px 25px 0 rgba(29, 185, 84, 0.4);
+      background: #1aa34a;
+      border-color: #1aa34a;
+      box-shadow: var(--shadow-medium);
       transform: translateY(-3px);
     }
 
-    /* YouTube Button Style */
     .youtube-btn {
-        background-color: #FF0000; /* YouTube Red */
+        background-color: #FF0000;
         color: white;
         border-color: #FF0000;
     }
     .youtube-btn:hover {
-        background-color: #cc0000;
-        border-color: #cc0000;
-        color: white;
-        box-shadow: 0 8px 25px 0 rgba(255, 0, 0, 0.4);
+        background-color: #d60000;
+        border-color: #d60000;
+        box-shadow: var(--shadow-medium);
         transform: translateY(-3px);
     }
+
+    /* Video Grid */
     .videos-grid {
-      display: grid; /* Changed to grid for more control */
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive grid */
-      gap: 2rem; /* Increased gap */
-      justify-content: center;
-      margin-top: 1.5rem;
-      padding: 0 1rem; /* Added padding for smaller screens */
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
     }
-    .video-wrapper { /* Wrapper for each iframe for consistent styling */
-        border-radius: var(--radius);
-        box-shadow: 0 8px 28px 0 rgba(9, 142, 115, 0.15);
-        overflow: hidden; /* Ensures iframe corners are rounded */
+    .video-wrapper {
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-medium);
+        overflow: hidden;
         position: relative;
-        transition: transform .25s cubic-bezier(.53,-0.23,.35,1.36), box-shadow .25s;
-        background: #222; /* Fallback for iframe loading */
+        transition: var(--transition-smooth);
+        background: #e0e0e0; /* Placeholder background */
     }
     .video-wrapper:hover {
-      transform: scale(1.04) translateY(-5px);
-      box-shadow: 0 15px 40px 0 rgba(33, 203, 168, 0.5);
+      transform: scale(1.03) translateY(-6px);
+      box-shadow: var(--shadow-strong);
       z-index:3;
     }
     .videos-grid iframe {
       border: none;
       width: 100%;
-      height: 210px; /* Maintained height */
-      display: block; /* Remove extra space below iframe */
+      height: 220px; /* Slightly taller */
+      display: block;
     }
-    .playlist-embed-wrapper { /* Specific wrapper if playlist needs different aspect ratio or prominence */
-        grid-column: 1 / -1; /* Make playlist span full width if needed */
-        margin-top: 1rem; /* Space above playlist if it's full width */
+    .playlist-embed-wrapper {
+        grid-column: 1 / -1;
+        margin-top: 1.5rem;
     }
     .playlist-embed-wrapper iframe {
-        height: 450px; /* Taller for playlist view */
+        height: 480px; /* Taller playlist */
     }
 
 
-    /* Testimonials */
+    /* Testimonials Section */
     #testimonials {
-      background: linear-gradient(115deg,rgba(31,226,189,0.06) 35%,#f3f5fa 100%);
-      padding: 4.8rem 0 4.3rem 0;
-      margin-top: 2.2rem;
+      background: linear-gradient(120deg, rgba(0, 168, 150, 0.05) 0%, rgba(240, 244, 248, 0.6) 100%);
+      padding: 5rem 0;
       text-align: center;
     }
-    #testimonials h2 {
-      font-size: 2.04rem;
-      font-weight: 900;
-      font-family: 'Montserrat', sans-serif;
-      margin-bottom: 2.1rem;
-      margin-top: 0;
-      letter-spacing: -.7px;
-    }
     .testimonial-box {
-      background: #fff;
-      border: 1.7px solid var(--border);
-      border-radius: var(--radius);
-      max-width: 640px;
-      margin: 0 auto 2rem auto;
-      box-shadow: 0 8px 30px 0 #09f8941a;
-      animation: fade-in 1.3s cubic-bezier(.26,.8,.23,1.06);
+      background: var(--card-background);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-lg);
+      max-width: 700px;
+      margin: 0 auto 2.5rem auto;
+      box-shadow: var(--shadow-medium);
+      padding: 2.5rem 2rem;
+      position: relative; /* For potential quote icon */
+    }
+    .testimonial-box::before { /* Decorative quote icon */
+        content: '\\ea1a'; /* Remixicon quote icon (ri-double-quotes-l) */
+        font-family: 'remixicon' !important;
+        font-size: 3rem;
+        color: var(--primary-color);
+        opacity: 0.15;
+        position: absolute;
+        top: 1rem;
+        left: 1.5rem;
     }
     .testimonial-box p {
       font-style: italic;
-      color: #2d3951ee;
-      font-size: 1.11rem;
-      padding: 2.1rem 1.7rem 1rem 1.7rem;
-      margin: 0;
+      color: #4a5568;
+      font-size: 1.15rem; /* Slightly larger */
+      line-height: 1.7;
+      margin: 0 0 1rem 0;
+    }
+    .testimonial-box .author {
+        font-style: normal;
+        font-weight: 600;
+        color: var(--primary-hover);
+        display: block;
+        margin-top: 1rem;
+        font-size: 1rem;
     }
     #testimonials .fiverr-link {
-      color: #19ad8f;
-      font-weight: 600;
+      color: var(--secondary-color);
+      font-weight: 700;
       text-decoration: none;
-      transition: text-decoration .2s, color .14s;
+      transition: var(--transition-smooth);
+      border-bottom: 2px solid transparent;
     }
     #testimonials .fiverr-link:hover {
-      text-decoration: underline;
-      color: #b721ff;
+      color: var(--primary-hover);
+      border-bottom-color: var(--primary-hover);
     }
-    /* Contact */
+
+    /* Contact Section */
     #contact {
-      padding: 3.1rem 0 2.3rem 0;
-      text-align: center;
-    }
-    #contact h2 {
-      font-size: 2rem;
-      font-family:'Montserrat',sans-serif;
-      font-weight: 900;
-      margin-bottom: 1.23rem;
-      margin-top: 0;
+      /* Uses default odd section background */
     }
     #contact p {
-      font-size: 1.16rem;
-      color: var(--muted-foreground);
-      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      color: var(--muted-text-color);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .hire-btn {
-      display: inline-flex; /* Align icon */
-      align-items: center;
-      gap: 0.6rem; /* Space for icon */
-      background: var(--primary-grad);
+    /* Primary Button Style (reusable for Hire Me) */
+    .primary-btn {
+      background: var(--primary-color);
       color: #fff;
-      border: none;
-      border-radius: 0.65rem;
-      padding: 0.9em 2.4em; /* Adjusted padding */
-      font-size: 1.15rem; /* Slightly larger */
-      font-weight: 700;
-      font-family:'Montserrat',sans-serif;
-      letter-spacing:.2px;
-      text-decoration: none;
-      box-shadow: 0 8px 32px 0 rgba(29, 185, 84, 0.15); /* Adjusted shadow color */
-      cursor: pointer;
-      transition: var(--transition-all);
-      margin-bottom:1.9rem;
-      position:relative;
-      overflow:hidden;
+      border-color: var(--primary-color);
     }
-    .hire-btn i { /* Icon style for hire button */
-        font-size: 1.3rem;
+    .primary-btn:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+      box-shadow: var(--shadow-medium);
+      transform: translateY(-3px) scale(1.02);
     }
-    .hire-btn::after {
-      content:'';
-      position:absolute; inset:0;
-      opacity:.11; background:var(--accent-grad); pointer-events:none;
-      transition:opacity .2s;
-    }
-    .hire-btn:hover {
-      background: linear-gradient(90deg, #21d4fd, #b721ff); /* Accent gradient on hover */
-      color: #fff; /* White text on gradient */
-      box-shadow: 0 17px 44px 0 rgba(33, 212, 253, 0.3); /* Shadow from new gradient */
-      transform: translateY(-2px) scale(1.03);
-    }
-     .hire-btn:hover::after {
-        opacity: 0; /* Hide default overlay on hover if gradient is applied directly */
-     }
     #contact .highlight {
-      color: #10846c;
-      font-size: 1.14rem;
+      color: var(--primary-hover);
+      font-size: 1.2rem;
       font-weight: 700;
-      margin-top: 2.18rem;
+      margin-top: 2.5rem;
+      display: block;
     }
+
     /* Footer */
     footer {
-      padding: 1.85rem 0 1.65rem 0;
+      padding: 2.5rem 0;
       text-align: center;
-      border-top: 1.25px solid #e1eced;
-      background: #f4f7fa;
-      color: #8c94a1;
+      border-top: 1px solid var(--border-color);
+      background: #e9ecef; /* Slightly different footer background */
+      color: var(--muted-text-color);
       margin-top: auto;
-      font-size:1.01rem;
+      font-size: 0.95rem;
     }
-    /* Responsive */
+    footer p {
+        margin: 0;
+    }
+    footer .social-links {
+        margin-top: 0.8rem;
+    }
+    footer .social-links a {
+        color: var(--muted-text-color);
+        font-size: 1.5rem;
+        margin: 0 0.7rem;
+        transition: color 0.3s ease;
+    }
+    footer .social-links a:hover {
+        color: var(--primary-color);
+    }
+
+
+    /* Responsive Adjustments */
     @media (max-width: 1060px) {
-      .container {padding-left:12px;padding-right:12px;}
-      .service-grid {gap:1.2rem;}
-      .videos-grid {gap:1.5rem;} /* Adjusted gap */
-      .audio-gallery {gap: 1.5rem;} /* Adjusted gap */
+      .container {padding-left:1rem;padding-right:1rem;}
+      .service-grid, .audio-gallery, .videos-grid {gap:1.5rem;}
     }
+
     @media (max-width: 950px) {
-      .service-grid {flex-direction: column;}
-      /* Keep videos and audio in grid for better layout on tablets */
-      #about .about-content {padding: 1.3rem .8rem .6rem .8rem;}
+      /* Service cards stack on tablets */
+      .service-grid {grid-template-columns: 1fr;}
+      #hero h1 { font-size: 2.8rem; }
+      #hero p { font-size: 1.2rem; }
+      section h2 { font-size: 2.2rem; }
     }
-     @media (max-width: 700px){
-      .brand {font-size: 1.6rem;} /* Slightly increased for better visibility */
-      nav ul{gap:12px;} /* Adjusted gap */
-      nav a { font-size: 1rem; }
-      #hero h1 {font-size: 1.8rem; line-height: 1.3;} /* Adjusted hero title */
-      #hero p {font-size: 1.15rem;}
-      #about h2, #services h2, #portfolio h2, #testimonials h2, #contact h2 {font-size: 1.5rem; margin-bottom: 1.8rem;} /* Adjusted section titles */
-      .service-card, .testimonial-box {padding: 1rem;} /* Adjusted padding */
-      .videos-grid {grid-template-columns: 1fr; gap:1.2rem;} /* Single column for videos */
-      .audio-gallery {grid-template-columns: 1fr; gap:1.2rem;} /* Single column for audio */
-      .videos-grid iframe {height:180px;} /* Adjusted height */
-      .playlist-embed-wrapper iframe {height: 300px;}
-      #about .about-content{padding:.82rem .5rem .48rem .5rem;}
-      .spotify-btn, .youtube-btn, .hire-btn {font-size: 0.95rem; padding: 0.7rem 1.5rem;} /* Smaller buttons */
-      .portfolio-section h3 {font-size: 1.35rem;}
+
+     @media (max-width: 768px){ /* Tablet and Mobile */
+      .brand {font-size: 2rem;}
+      .brand i { font-size: 1.8rem; }
+
+      /* Hamburger Menu Logic */
+      .menu-toggle {
+          display: block; /* Show hamburger */
+          order: 1; /* Move to the right if nav is also present */
+      }
+      nav {
+          order: 2; /* Ensure nav comes after toggle in flex order if needed */
+      }
+      nav ul {
+        display: none; /* Hide nav links by default */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98); /* Slightly more opaque for readability */
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.07);
+        padding: 1rem 0;
+        border-top: 1px solid var(--border-color);
+        z-index: 999; /* Ensure it's above other content */
+      }
+      nav ul.active { /* Class to show menu */
+          display: flex;
+      }
+      nav li {
+          width: 100%;
+          text-align: center;
+      }
+      nav a {
+          display: block; /* Make links full width for easier tapping */
+          padding: 1rem;
+          font-size: 1.1rem;
+          border-bottom: 1px solid var(--border-color);
+      }
+      nav li:last-child a {
+          border-bottom: none;
+      }
+      nav a::after { /* Adjust underline for mobile */
+          bottom: 0.5rem; /* Raise underline slightly */
+          height: 2px;
+      }
+
+      #hero h1 {font-size: 2.2rem; line-height: 1.35;}
+      #hero p {font-size: 1.1rem;}
+      section h2 {font-size: 1.8rem; margin-bottom: 2rem;}
+      .service-card, .testimonial-box, .audio-card {padding: 1.5rem;}
+      .videos-grid {grid-template-columns: 1fr; gap:1.5rem;}
+      .audio-gallery {grid-template-columns: 1fr; gap:1.5rem;}
+      .videos-grid iframe {height:200px;}
+      .playlist-embed-wrapper iframe {height: 350px;}
+      #about .about-content{padding:1.5rem 1rem;}
+      .spotify-btn, .youtube-btn, .primary-btn {font-size: 0.9rem; padding: 0.8rem 1.5rem;}
+      .portfolio-section h3 {font-size: 1.5rem;}
+      .action-buttons-container { gap: 1rem; }
     }
-    @media (max-width: 420px) {
-      .container {padding-left:8px;padding-right:8px;} /* More padding */
-      .nav-flex { flex-direction: column; text-align: center; }
-      nav ul { justify-content: center; margin-top: 0.5rem;}
-      #hero h1 {font-size: 1.6rem;}
-      .portfolio-section h3 {font-size: 1.25rem;}
-      .spotify-btn i, .youtube-btn i, .hire-btn i {font-size: 1.1rem;}
+
+    @media (max-width: 480px) { /* Smaller Mobile */
+      .container {padding-left:0.8rem;padding-right:0.8rem;}
+      .brand {font-size: 1.8rem;}
+      .brand i {font-size: 1.6rem;}
+      #hero h1 {font-size: 2rem;}
+      #hero p {max-width: 90%;}
+      .portfolio-section h3 {font-size: 1.4rem;}
+      .spotify-btn i, .youtube-btn i, .primary-btn i {font-size: 1.2rem;}
+      .service-card h3 { font-size: 1.3rem; }
+      .service-card h3 i { font-size: 1.5rem; }
+      .audio-card h4 { font-size: 1.1rem; }
+      .testimonial-box p { font-size: 1.05rem; }
+      footer { padding: 2rem 0; }
     }
   </style>
  </head>
  <body>
   <header class="fade-in">
-   <div class="container nav-flex"><br>
+   <div class="container nav-flex">
     <a class="brand" href="#hero">
-     ZEST OF MUSIC | DENISH SHUKLA
-    </a><br> 
-    <nav>
+     Zest of Music
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+        <i class="ri-menu-3-line"></i>
+    </button>
+    <nav id="mainNav">
      <ul>
-      <li>
-       <a href="#hero">
-        Home
-       </a>
-      </li>
-      <li>
-       <a href="#about">
-        About
-       </a>
-      </li>
-      <li>
-       <a href="#services">
-        Services
-       </a>
-      </li>
-      <li>
-       <a href="#portfolio">
-        Portfolio
-       </a>
-      </li>
-      <li>
-       <a href="#contact">
-        Contact
-       </a>
-      </li>
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
      </ul>
     </nav>
-   </div><br>
+   </div>
   </header>
+
   <main style="flex:1">
-   <section class="fade-up" id="services">
+
+   <section id="hero">
     <div class="container">
-     <h2>
-      My Services
-     </h2>
+        <h1>Denish Shukla</h1>
+        <p class="fade-up" style="transition-delay: 0.2s;">Music Producer, Audio Engineer & Piano Teacher</p>
+        <a href="#contact" class="primary-btn fade-up" style="transition-delay: 0.4s;"><i class="ri-customer-service-2-line"></i> Let's Create Music</a>
+    </div>
+   </section>
+
+   <section id="portfolio" class="fade-up">
+    <div class="container">
+     <h2>My Work</h2>
+     <div class="portfolio-section fade-up" style="transition-delay:.45s">
+      <h3><i class="ri-vidicon-fill"></i>Video Gallery</h3>
+      <p>Check out some of my video projects and performances. More on my YouTube channel!</p>
+      <div class="videos-grid">
+       <div class="video-wrapper fade-up" style="transition-delay:.5s">
+        <iframe src="https://www.youtube.com/embed/gVt8KtDC9kQ"" title="Kal Ho Na Ho - Piano Instrumental | Rain LOFI 2023" allowfullscreen loading="lazy"></iframe>
+       </div>
+       <div class="video-wrapper fade-up" style="transition-delay:.55s">
+        <iframe src="https://www.youtube.com/embed/vmvXALIo-Lw" title="Gulabi Aankhen Extended Version 2017 | Lyrical Instrumental" allowfullscreen loading="lazy"></iframe>
+       </div>
+       <div class="video-wrapper fade-up" style="transition-delay:.6s">
+        <iframe src="https://www.youtube.com/embed/giYtf_2QYpE" title="Kesariya Karoke | Hindi Lyrics" allowfullscreen loading="lazy"></iframe>
+       </div>
+       <div class="video-wrapper fade-up" style="transition-delay:.65s">
+        <iframe src="https://www.youtube.com/embed/d9hkCtCbIsw" title="Baarish Lete Aana Instrumental - Denish Shukla" allowfullscreen loading="lazy"></iframe>
+       </div>
+       <div class="video-wrapper fade-up" style="transition-delay:.65s">
+        <iframe src="https://www.youtube.com/embed/2wzbzbNgY_4?si=jFe2OKihxE4XSXqJ" title="Baarish Lete Aana Instrumental - Denish Shukla" allowfullscreen loading="lazy"></iframe>
+       </div>
+       <div class="video-wrapper fade-up" style="transition-delay:.65s">
+        <iframe src="https://www.youtube.com/embed/9EjtUl4n5CM?si=4I70m1iHi_UPB8Kv" title="Baarish Lete Aana Instrumental - Denish Shukla" allowfullscreen loading="lazy"></iframe>
+       </div>
+      </div>
+      <div class="portfolio-section fade-up" style="transition-delay:.1s">
+        <h3><i class="ri-headphone-fill"></i>Audio Showcase</h3>
+        <p>Listen to a selection of my productions. For the best experience, use headphones!</p>
+        <div class="audio-gallery">
+         <div class="audio-card fade-up" style="transition-delay:.15s">
+          <i class="ri-play-circle-line audio-icon"></i><h4>Sneha Pari - Marathi</h4>
+          <audio controls src="Audio/Sneha_Pari_Marathi.mp3" title="Sneha Pari - Marathi" preload="metadata"></audio>
+         </div>
+         <div class="audio-card fade-up" style="transition-delay:.2s">
+          <i class="ri-play-circle-line audio-icon"></i><h4>Mashup - Master</h4>
+          <audio controls src="Audio/Mashup_master.mp3" title="Mashup - Master" preload="metadata"></audio>
+         </div>
+         <div class="audio-card fade-up" style="transition-delay:.25s">
+          <i class="ri-play-circle-line audio-icon"></i><h4>In Aankhon ki Masti</h4>
+          <audio controls src="Audio/In_Aankhon_ki_masti.mp3" title="In Aankhon ki Masti" preload="metadata"></audio>
+         </div>
+         <div class="audio-card fade-up" style="transition-delay:.3s">
+          <i class="ri-play-circle-line audio-icon"></i><h4>Beche</h4>
+          <audio controls src="Audio/Beche.mp3" title="Beche" preload="metadata"></audio>
+         </div>
+         <div class="audio-card fade-up" style="transition-delay:.35s">
+          <i class="ri-play-circle-line audio-icon"></i><h4>Paththavaikkum</h4>
+          <audio controls src="Audio/Paththavaikkum.mp3" title="Paththavaikkum" preload="metadata"></audio>
+         </div>
+         <div class="audio-card fade-up" style="transition-delay:.35s">
+          <i class="ri-play-circle-line audio-icon"></i><h4>Lofi-Kal Ho Na Ho Instrumental</h4>
+          <audio controls src="Audio/Lofi - Kal Ho Na Ho Instrumental.mp3" title="Paththavaikkum" preload="metadata"></audio>
+         </div>
+        </div>
+        <div class="action-buttons-container fade-up" style="transition-delay:.4s">
+         <a class="spotify-btn" href="https://open.spotify.com/artist/6tn0ZmFEInAMG2pQrAbmYr?si=tBWvyYZXSceSGlTUJmCoIQ&amp;nd=1&amp;dlsi=d7544e228b6445ae" rel="noopener noreferrer" target="_blank">
+          <i class="ri-spotify-fill"></i>Listen on Spotify
+         </a>
+        </div>
+       </div>
+      <div class="portfolio-section fade-up" style="transition-delay:.7s; margin-top: 3rem;">
+       <h3><i class="ri-play-list-2-fill"></i>Featured Playlist</h3>
+       <p>Enjoy a curated playlist of my work.</p>
+       <div class="videos-grid playlist-embed-wrapper">
+        <div class="video-wrapper fade-up" style="transition-delay:.75s">
+         <iframe src="https://www.youtube.com/embed/videoseries?list=PLGmvYT3_OQUYSlORyfhfi4TqnWSTCdOq7" title="My Music Playlist" allowfullscreen loading="lazy"></iframe>
+        </div>
+       </div>
+       <div class="videos-grid playlist-embed-wrapper">
+        <div class="video-wrapper fade-up" style="transition-delay:.75s">
+         <iframe src="https://www.youtube.com/embed/2Bpg7yixW5o?si=y5YPc3G4ow9M1hT0" title="My Music Playlist" allowfullscreen loading="lazy"></iframe>
+        </div>
+       </div>
+       <div class="videos-grid playlist-embed-wrapper">
+        <div class="video-wrapper fade-up" style="transition-delay:.75s">
+         <iframe src="https://www.youtube.com/embed/SFaS4ZHQtmE?si=Q_aOe_bXmd94emVK" title="My Music Playlist" allowfullscreen loading="lazy"></iframe>
+        </div>
+       </div>
+      </div>
+      <div class="action-buttons-container fade-up" style="transition-delay:.75s">
+        <a class="youtube-btn" href="https://www.youtube.com/@ZestofMusic" rel="noopener noreferrer" target="_blank">
+         <i class="ri-youtube-fill">
+         </i>
+         See more on Zest of Music (ZM studio)'s YouTube
+        </a>
+       </div>
+     </div>
+    </div>
+   </section>
+
+   <section id="services" class="fade-up">
+    <div class="container">
+     <h2>My Services</h2>
      <div class="service-grid">
-      <div class="service-card fade-up" style="transition-delay:.07s">
-       <h3>
-        <i class="ri-music-2-fill">
-        </i>
-        Music Production
-       </h3>
+      <div class="service-card fade-up" style="transition-delay:.1s">
+       <h3><i class="ri-music-2-fill"></i>Music Production</h3>
        <p>
         Producing original music for clients, tailored to your vision and genre. From concept to final track, I bring creativity and technical expertise to every project.
        </p>
       </div>
-      <div class="service-card fade-up" style="transition-delay:.13s">
-       <h3>
-        <i class="ri-equalizer-fill">
-        </i>
-        Audio Engineering
-       </h3>
+      <div class="service-card fade-up" style="transition-delay:.2s">
+       <h3><i class="ri-equalizer-fill"></i>Audio Engineering</h3>
        <p>
         Providing comprehensive audio engineering services including mixing, mastering, and audio restoration to ensure your music sounds polished and professional.
        </p>
       </div>
-      <div class="service-card fade-up" style="transition-delay:.19s">
-       <h3>
-        <i class="ri-piano-fill">
-        </i>
-        Piano &amp; Keyboard Lessons
-       </h3>
+      <div class="service-card fade-up" style="transition-delay:.3s">
+       <h3><i class="ri-piano-fill"></i>Piano & Keyboard Lessons</h3>
        <p>
         Teaching piano and keyboard online with 9+ years of experience. Lessons are tailored for students of all ages (5-60), from absolute beginners to aspiring performers, focusing on building confidence, creativity, and musical skill.
        </p>
@@ -659,135 +842,11 @@
      </div>
     </div>
    </section>
-   <section class="fade-up" id="portfolio">
+
+   <section id="about" class="fade-up">
     <div class="container">
-     <h2>
-      My Work
-     </h2>
-     <div class="portfolio-section fade-up">
-      <h3>
-       <i class="ri-headphone-fill">
-       </i>
-       Audio Showcase
-      </h3>
-      <p>
-       Listen to a selection of my productions. For the best experience, use headphones!
-       <br/>
-      </p>
-      <div class="audio-gallery">
-       <div class="audio-card fade-up" style="transition-delay:.1s">
-        <i class="ri-music-2-line audio-icon">
-        </i>
-        <h4>
-            Sneha Pari - Marathi
-        </h4>
-        <audio controls="" src="Audio/Sneha_Pari_Marathi.mp3" title="Sneha Pari - Marathi">
-        </audio>
-       </div>
-       <div class="audio-card fade-up" style="transition-delay:.15s">
-        <i class="ri-music-2-line audio-icon">
-        </i>
-        <h4>
-            Mashup - Master
-        </h4>
-        <audio controls="" src="Audio/Mashup_master.mp3" title="Mashup - Master">
-        </audio>
-       </div>
-       <div class="audio-card fade-up" style="transition-delay:.2s">
-        <i class="ri-music-2-line audio-icon">
-        </i>
-        <h4>
-            In_Aankhon_ki_masti
-        </h4>
-        <audio controls="" src="Audio/In_Aankhon_ki_masti.mp3" title="Audio Sample 3">
-        </audio>
-       </div>
-       <div class="audio-card fade-up" style="transition-delay:.25s">
-        <i class="ri-music-2-line audio-icon">
-        </i>
-        <h4>
-            Beche
-        </h4>
-        <audio controls="" src="Audio/Beche.mp3" title="Audio Sample 4">
-        </audio>
-       </div>
-       <div class="audio-card fade-up" style="transition-delay:.3s">
-        <i class="ri-music-2-line audio-icon">
-        </i>
-        <h4>
-            Paththavaikkum
-        </h4>
-        <audio controls="" src="Audio/Paththavaikkum.mp3" title="Audio Sample 5">
-        </audio>
-       </div>
-      </div>
-      <div class="action-buttons-container fade-up" style="transition-delay:.35s">
-       <a class="spotify-btn" href="https://open.spotify.com/artist/6tn0ZmFEInAMG2pQrAbmYr?si=tBWvyYZXSceSGlTUJmCoIQ&amp;nd=1&amp;dlsi=d7544e228b6445ae" rel="noopener noreferrer" target="_blank">
-        <i class="ri-spotify-fill">
-        </i>
-        Listen on Spotify
-       </a>
-      </div>
-     </div>
-     <div class="portfolio-section fade-up" style="transition-delay:.4s">
-      <h3>
-       <i class="ri-vidicon-fill">
-       </i>
-       Video Gallery
-      </h3>
-      <p>
-       Check out some of my video projects and performances. More on my YouTube channel!
-      </p>
-      <div class="videos-grid">
-       <div class="video-wrapper fade-up" style="transition-delay:.45s">
-        <iframe allowfullscreen="" src="https://www.youtube.com/embed/gVt8KtDC9kQ" title="Kal Ho Na Ho - Piano Instrumental | Rain LOFI 2023">
-        </iframe>
-       </div>
-       <div class="video-wrapper fade-up" style="transition-delay:.5s">
-        <iframe allowfullscreen="" src="https://www.youtube.com/embed/vmvXALIo-Lw" title="Gulabi Aankhen Extended Version 2017 | Lyrical Instrumental">
-        </iframe>
-       </div>
-       <div class="video-wrapper fade-up" style="transition-delay:.55s">
-        <iframe allowfullscreen="" src="https://www.youtube.com/embed/giYtf_2QYpE" title="Kesariya Karoke | Hindi Lyrics">
-        </iframe>
-       </div>
-       <div class="video-wrapper fade-up" style="transition-delay:.6s">
-        <iframe allowfullscreen="" src="https://www.youtube.com/embed/d9hkCtCbIsw" title="Baarish Lete Aana Instrumental - Denish Shukla">
-        </iframe>
-       </div>
-      </div>
-      <div class="portfolio-section fade-up" style="transition-delay:.65s; margin-top: 2.5rem;">
-       <h3>
-        <i class="ri-play-list-2-fill">
-        </i>
-        Featured Playlist
-       </h3>
-       <p>
-        Enjoy a curated playlist of my work.
-       </p>
-       <div class="videos-grid playlist-embed-wrapper">
-        <div class="video-wrapper fade-up" style="transition-delay:.7s">
-         <iframe allowfullscreen="" src="https://www.youtube.com/embed/videoseries?list=PLGmvYT3_OQUYSlORyfhfi4TqnWSTCdOq7" title="My Music Playlist">
-         </iframe>
-        </div>
-       </div>
-      </div>
-      <div class="action-buttons-container fade-up" style="transition-delay:.75s">
-       <a class="youtube-btn" href="https://www.youtube.com/@ZestofMusic" rel="noopener noreferrer" target="_blank">
-        <i class="ri-youtube-fill">
-        </i>
-        See more on Zest of Music (ZM studio)'s YouTube
-       </a>
-      </div>
-     </div>
-    </div>
-   </section>
-   <section class="fade-up" id="about">
-    <div class="about-content">
-     <h2>
-      About Me
-     </h2>
-     <div>
+     <div class="about-content">
+      <h2>About Me</h2>
       <p>
        With over 9+ years in the music industry, I am a passionate music producer, audio engineer, and piano teacher. My journey in music has been driven by a deep love for sound and a commitment to helping artists and students achieve their musical aspirations.
       </p>
@@ -803,68 +862,163 @@
      </div>
     </div>
    </section>
-   <section class="fade-up" id="contact">
-    <div class="container">
-     <h2>
-      Get in Touch
-     </h2>
-     <p>
-      Ready to start your next audio project or learn piano?
-     </p>
-     <a class="hire-btn fade-up" href="https://www.fiverr.com/s/WEjvK05" rel="noopener" target="_blank">
-      <i class="ri-send-plane-2-fill">
-      </i>
-      Hire Denish on Fiverr
+
+   <section id="contact" class="fade-up">
+    <div class="container" style="text-align: center;">
+     <h2>Get in Touch</h2>
+     <p>Ready to start your next audio project, enhance your tracks, or learn piano? <br>Let's discuss how I can help you achieve your musical goals.</p>
+     <a class="primary-btn fade-up" style="transition-delay: 0.1s;" href="https://www.fiverr.com/s/WEjvK05" rel="noopener" target="_blank">
+      <i class="ri-send-plane-2-fill"></i>Hire Denish on Fiverr
      </a>
-     <div class="highlight">
+     <div class="highlight fade-up" style="transition-delay: 0.2s;">
       Let's bring your sound to life.
      </div>
     </div>
    </section>
   </main>
+
   <footer class="fade-up">
    <div class="container">
-    <p>
-     © 2025 Denish. All rights reserved.
-    </p>
+    <p>© <span id="currentYear"></span> Denish Shukla. All rights reserved.</p>
+    <div class="social-links">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="ri-facebook-circle-line"></i></a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="ri-linkedin-box-line"></i></a>
+        </div>
    </div>
   </footer>
-  <script>
-   // Section reveal on scroll
-function revealOnScroll() {
-  const reveals = document.querySelectorAll('.fade-up, .fade-in');
-  const winH = window.innerHeight;
-  reveals.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    // Adjust offset for reveal, 60px from bottom of viewport
-    if(top < winH - 60) el.classList.add('visible');
-    // Optional: remove visible class if element scrolls out of view upwards
-    // else if(top > winH) el.classList.remove('visible'); 
-  });
-}
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(revealOnScroll, 220); // in case above fold loaded instantly
-  window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll(); // Initial check
 
-  // Smooth scroll offset for navigation
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
-  const headerOffset = document.querySelector('header') ? document.querySelector('header').offsetHeight + 10 : 60; // Dynamic offset based on header height or fixed
-  
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      const id = this.getAttribute('href').slice(1);
-      const target = document.getElementById(id);
-      if(target) {
-        e.preventDefault();
-        window.scrollTo({
-          top: target.offsetTop - headerOffset,
-          behavior: 'smooth'
-        });
-      }
+  <script>
+  // ----- SMOOTH SCROLL & ACTIVE NAV LINK -----
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    const header = document.querySelector('header');
+    let headerOffset = header ? header.offsetHeight + 15 : 75; // Dynamic offset
+
+    // Update headerOffset if header resizes (e.g. on window resize)
+    window.addEventListener('resize', () => {
+        headerOffset = header ? header.offsetHeight + 15 : 75;
     });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const id = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(id);
+
+        if (targetElement) {
+          const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+
+          // Close mobile menu if open
+          const mainNav = document.getElementById('mainNav');
+          const menuToggle = document.getElementById('menuToggle');
+          if (mainNav.classList.contains('active')) {
+              mainNav.classList.remove('active');
+              menuToggle.innerHTML = '<i class="ri-menu-3-line"></i>'; // Reset icon
+              menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+    });
+
+    // ----- ACTIVE LINK HIGHLIGHTING ON SCROLL -----
+    const sections = document.querySelectorAll('section[id]');
+    function activateLinkOnScroll() {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            // Adjust for header height and a bit more for better UX
+            if (pageYOffset >= sectionTop - headerOffset - 20) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === current) {
+                link.classList.add('active');
+            }
+        });
+        // Default to home if no section is active (e.g., at the very top)
+        if (!current && navLinks.length > 0) {
+            const homeLink = document.querySelector('nav a[href="#hero"]');
+            if (homeLink) homeLink.classList.add('active');
+        }
+    }
+
+
+    // ----- SECTION REVEAL ON SCROLL -----
+    const revealElements = document.querySelectorAll('.fade-up, .fade-in');
+    function revealOnScroll() {
+      const windowHeight = window.innerHeight;
+      revealElements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        // Reveal when element is about 100px from the bottom of the viewport
+        if (elementTop < windowHeight - 80) {
+          el.classList.add('visible');
+        }
+        // Optional: remove visible class if element scrolls out of view upwards
+        // else if (elementTop > windowHeight) {
+        //   el.classList.remove('visible');
+        // }
+      });
+    }
+
+    // Initial calls and event listeners
+    setTimeout(revealOnScroll, 150); // Small delay for initial load
+    window.addEventListener('scroll', () => {
+        revealOnScroll();
+        activateLinkOnScroll();
+    });
+    activateLinkOnScroll(); // Initial check for active link
+
+    // ----- HAMBURGER MENU TOGGLE -----
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const isExpanded = mainNav.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', isExpanded.toString());
+            if (isExpanded) {
+                menuToggle.innerHTML = '<i class="ri-close-line"></i>'; // Change to close icon
+            } else {
+                menuToggle.innerHTML = '<i class="ri-menu-3-line"></i>'; // Change back to menu icon
+            }
+        });
+    }
+
+    // ----- DYNAMIC YEAR IN FOOTER -----
+    const currentYearSpan = document.getElementById('currentYear');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+
+    // ----- REPLACE PLACEHOLDER VIDEO URLS (IMPORTANT) -----
+    // You should replace 'VIDEO_ID_X' and 'YOUR_PLAYLIST_ID' with actual YouTube video/playlist IDs.
+    // Example:
+    // const videoIframes = document.querySelectorAll('.videos-grid iframe');
+    // const videoIds = ['actual_video_id_1', 'actual_video_id_2', 'actual_video_id_3', 'actual_video_id_4'];
+    // const playlistIframe = document.querySelector('.playlist-embed-wrapper iframe');
+    // const playlistId = 'actual_playlist_id';
+
+    // videoIframes.forEach((iframe, index) => {
+    //     if (videoIds[index]) {
+    //         iframe.src = `https://www.youtube.com/embed/${videoIds[index]}`;
+    //     }
+    // });
+    // if (playlistIframe && playlistId) {
+    //     playlistIframe.src = `https://www.youtube.com/embed/playlist?list=${playlistId}`;
+    // }
+    // For now, I've kept the placeholder URLs. Please update them.
   });
-});
   </script>
  </body>
 </html>
